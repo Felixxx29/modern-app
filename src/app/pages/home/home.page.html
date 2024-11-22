@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar [(ngModel)]="searchModel"></ion-searchbar>
+    </ion-toolbar>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="search(searchModel)">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="random()">
+        <ion-icon name="shuffle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  @if (isLoading) { loading... } @else { @for (drink of drinks; track
+  drink.idDrink) {
+  <app-card
+    [drink]="drink"
+    [routerLink]="['detauled-drink/' + drink.idDrink]"
+  ></app-card>
+  } }
+</ion-content>
