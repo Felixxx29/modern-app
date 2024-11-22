@@ -16,6 +16,7 @@ import { ApiDrink } from '../../interfaces/api';
 import { FormsModule } from '@angular/forms';
 import { catchError, finalize } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
+import { DetailedModalComponent } from '../../components/detailed-modal/detailed-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -33,6 +34,7 @@ import { Router, RouterLink } from '@angular/router';
     CardComponent,
     FormsModule,
     RouterLink,
+    DetailedModalComponent,
   ],
 })
 export class HomePage {
@@ -52,24 +54,6 @@ export class HomePage {
     this.isLoading = true;
     this.coctailService
       .getByNameCoctail(drinkName)
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        }),
-        catchError((error: any) => {
-          //error handling logic
-          return [];
-        })
-      )
-      .subscribe((response) => {
-        this.drinks = Array.isArray(response.drinks) ? response.drinks : [];
-      });
-  }
-
-  public random(): void {
-    this.isLoading = true;
-    this.coctailService
-      .getRandomCoctail()
       .pipe(
         finalize(() => {
           this.isLoading = false;

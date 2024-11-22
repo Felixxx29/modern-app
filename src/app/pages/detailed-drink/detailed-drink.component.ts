@@ -8,28 +8,25 @@ import {
   IonContent,
   IonButtons,
   IonButton,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonCard,
-  IonCardContent, IonTitle } from '@ionic/angular/standalone';
-import { ApiDetailedDrink } from '../../interfaces/api';
+  IonTitle,
+} from '@ionic/angular/standalone';
+import { ApiDrink } from '../../interfaces/api';
+import { DetailedCardComponent } from 'src/app/components/detailed-card/detailed-card.component';
 
 @Component({
   selector: 'app-detailed-drink',
   templateUrl: './detailed-drink.component.html',
   styleUrls: ['./detailed-drink.component.scss'],
   standalone: true,
-  imports: [IonTitle, 
-    IonCardContent,
-    IonCard,
-    IonCardSubtitle,
-    IonCardTitle,
+  imports: [
+    IonTitle,
     IonHeader,
     IonToolbar,
     IonContent,
     IonButtons,
     IonButton,
     RouterLink,
+    DetailedCardComponent,
   ],
   providers: [CoctailService],
 })
@@ -37,7 +34,7 @@ export class DetailedDrinkComponent {
   private coctailService = inject(CoctailService);
   private route = inject(ActivatedRoute);
   public isLoading = false;
-  public detailedDrink?: ApiDetailedDrink;
+  public detailedDrink?: ApiDrink;
 
   constructor() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -59,7 +56,8 @@ export class DetailedDrinkComponent {
         })
       )
       .subscribe((coctail) => {
-        this.detailedDrink = coctail?.drinks[0] || undefined;
+        this.detailedDrink =
+          (Array.isArray(coctail?.drinks) && coctail?.drinks[0]) || undefined;
       });
   }
 }

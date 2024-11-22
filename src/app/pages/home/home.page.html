@@ -9,7 +9,7 @@
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
 
-      <ion-button (click)="random()">
+      <ion-button id="open-modal">
         <ion-icon name="shuffle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -25,3 +25,5 @@
   ></app-card>
   } }
 </ion-content>
+
+<app-detailed-modal trigger="open-modal"></app-detailed-modal>

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiCoctail, ApiDetailedCoctail } from '../interfaces/api';
-import { environment } from 'src/environments/environment';
+import { ApiCoctail } from '../interfaces/api';
 
 const BACE_URL = 'https://www.thecocktaildb.com/api/json/v1';
 const API_KEY = '1';
@@ -23,8 +22,8 @@ export class CoctailService {
     return this.http.get<ApiCoctail>(url);
   }
 
-  public getDetailedCoctail(id: string): Observable<ApiDetailedCoctail> {
+  public getDetailedCoctail(id: string): Observable<ApiCoctail> {
     const url = `${BACE_URL}/${API_KEY}/lookup.php?i=${id}`;
-    return this.http.get<ApiDetailedCoctail>(url);
+    return this.http.get<ApiCoctail>(url);
   }
 }
