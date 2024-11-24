@@ -46,7 +46,7 @@ export class DetailedModalComponent {
   public isLoading = false;
   public detailedDrink?: ApiDrink;
 
-  constructor() {
+  public ionModalWillPresent() {
     this.loadRandom();
   }
 
