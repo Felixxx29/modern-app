@@ -11,10 +11,10 @@
       </ion-toolbar>
     </ion-header>
 
-    <div class="oveflow-y-auto">
+    <ion-content>
       @if (isLoading) { loading... } @else { @if (detailedDrink) {
       <app-detailed-card [detailedDrink]="detailedDrink"></app-detailed-card>
       } }
-    </div>
+    </ion-content>
   </ng-template>
 </ion-modal>

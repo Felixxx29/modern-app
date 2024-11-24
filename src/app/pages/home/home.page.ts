@@ -44,7 +44,7 @@ export class HomePage {
   public isLoading = false;
   public error = null;
   public drinks: ApiDrink[] = [];
-  public searchModel = 'margarita';
+  public searchModel = '';
 
   constructor() {
     addIcons({ shuffleOutline, searchOutline });

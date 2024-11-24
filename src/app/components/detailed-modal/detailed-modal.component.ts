@@ -15,6 +15,7 @@ import {
   IonToolbar,
   IonButtons,
   IonButton,
+  IonContent,
 } from '@ionic/angular/standalone';
 import { DetailedCardComponent } from '../detailed-card/detailed-card.component';
 import { ApiDrink } from 'src/app/interfaces/api';
@@ -25,6 +26,7 @@ import { ApiDrink } from 'src/app/interfaces/api';
   styleUrls: ['./detailed-modal.component.scss'],
   standalone: true,
   imports: [
+    IonContent,
     IonModal,
     IonButton,
     IonButtons,

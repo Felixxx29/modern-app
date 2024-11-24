@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   IonCard,
   IonCardContent,
@@ -14,6 +14,29 @@ import { ApiDrink } from 'src/app/interfaces/api';
   standalone: true,
   imports: [IonCardSubtitle, IonCardTitle, IonCardContent, IonCard],
 })
-export class DetailedCardComponent {
+export class DetailedCardComponent implements OnChanges {
   @Input({ required: true }) detailedDrink!: ApiDrink;
+
+  ngOnChanges({ detailedDrink }: SimpleChanges): void {
+    if (detailedDrink) {
+      this.ingredients = [
+        this.detailedDrink.strIngredient1,
+        this.detailedDrink.strIngredient2,
+        this.detailedDrink.strIngredient3,
+        this.detailedDrink.strIngredient5,
+        this.detailedDrink.strIngredient6,
+        this.detailedDrink.strIngredient7,
+        this.detailedDrink.strIngredient8,
+        this.detailedDrink.strIngredient9,
+        this.detailedDrink.strIngredient10,
+        this.detailedDrink.strIngredient11,
+        this.detailedDrink.strIngredient12,
+        this.detailedDrink.strIngredient13,
+        this.detailedDrink.strIngredient14,
+        this.detailedDrink.strIngredient15,
+      ].filter((ingredient) => ingredient !== null);
+    }
+  }
+
+  public ingredients: (string | null)[] = [];
 }
